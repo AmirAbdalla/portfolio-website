@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Amir Abdalla, a passionate software engineering student specializing in web development.">
     <title>Amir Abdalla | Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
 </head>
@@ -18,7 +17,10 @@
     <!-- Header with Navigation -->
     <header>
         <nav>
-            <ul>
+            <div class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#resume">Resume</a></li>
@@ -30,34 +32,26 @@
     </header>
 
     <main>
-
         <!-- Home Section -->
         <section id="home" class="section-home">
             <h1 class="gradient-text">Amir Abdalla</h1>
-
             <a href="#projects" class="button">Check Out My Projects</a>
         </section>
-
 
         <!-- Projects Section -->
         <section id="projects" class="section section-projects" data-aos="fade-left">
             <h2>My Projects</h2>
-            <p>Here are some of the projects I've worked on. You can check out more on my <a
-                    href="https://github.com/AmirAbdalla" target="_blank">GitHub profile</a>.</p>
-            <!-- Add project cards here -->
+            <p>Here are some of the projects I've worked on. You can check out more on my <a href="https://github.com/AmirAbdalla" target="_blank" rel="noopener noreferrer">GitHub profile</a>.</p>
         </section>
 
         <!-- Resume Section -->
         <section id="resume" class="section section-resume" data-aos="fade-right">
             <h2>Resume</h2>
-            <p>If you'd like to learn more about my experience and skills, feel free to download my resume by clicking
-                the button below.</p>
+            <p>If you'd like to learn more about my experience and skills, feel free to download my resume by clicking the button below.</p>
             <a href="downloads/Amir_Abdalla_Resume.pdf" class="button" download>
                 <i class="fas fa-file-download"></i> Download Resume
             </a>
         </section>
-
-
 
         <!-- Skills Section -->
         <section id="skills" class="section section-skills" data-aos="fade-right">
@@ -78,11 +72,8 @@
         <!-- Stress Relief Section -->
         <section id="stress-relief" class="section section-fun" data-aos="fade-right">
             <h2>Feeling Stressed?</h2>
-            <a href="./Videos/never-gonna-give-you-up-rick-astley-lyrics-480-ytshorts.savetube.me.mp4" target="_blank"
-                class="button fun-button">Push the Button</a>
+            <a href="./Videos/never-gonna-give-you-up-rick-astley-lyrics-480-ytshorts.savetube.me.mp4" target="_blank" class="button fun-button">Push the Button</a>
         </section>
-
-
 
         <!-- Contact Section -->
         <section id="contact" class="section section-contact" data-aos="fade-left">
@@ -90,10 +81,8 @@
             <p>If you'd like to get in touch, feel free to contact me via phone or email.</p>
             <ul>
                 <li><i class="fas fa-phone"></i> 647-877-7677</li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:aabdalla14@myseneca.ca">aabdalla14@myseneca.ca</a>
-                </li>
-                <li><i class="fab fa-github"></i> <a href="https://github.com/AmirAbdalla"
-                        target="_blank">github.com/AmirAbdalla</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:aabdalla14@myseneca.ca">aabdalla14@myseneca.ca</a></li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/AmirAbdalla" target="_blank" rel="noopener noreferrer">github.com/AmirAbdalla</a></li>
             </ul>
             <form action="mailto:aabdalla14@myseneca.ca" method="POST" enctype="text/plain">
                 <input type="text" name="name" placeholder="Your Name" required>
@@ -101,11 +90,9 @@
                 <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
-
         </section>
 
         <button id="back-to-top" class="back-to-top">Back to Top</button>
-
     </main>
 
     <!-- Footer -->
@@ -116,70 +103,41 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
-    </script>
-    <script>
-        document.addEventListener('scroll', function () {
-            document.querySelectorAll('.section').forEach(function (section) {
-                if (section.getBoundingClientRect().top < window.innerHeight) {
-                    section.classList.add('visible');
-                }
-            });
-        });
-
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            observer.observe(section);
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 200,
         });
 
         const backToTopButton = document.getElementById('back-to-top');
-
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
+            backToTopButton.classList.toggle('show', window.scrollY > 500);
         });
 
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         });
 
         const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('nav ul');
+        const navMenu = document.querySelector('.nav-menu');
 
         navToggle.addEventListener('click', () => {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
             navMenu.classList.toggle('show');
         });
 
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                navToggle.setAttribute('aria-expanded', false);
+            });
+        });
     </script>
 
 </body>
 
 </html>
-
-
-<!-- // Music
-window.addEventListener('load', function () {
-    const audio = document.getElementById('background-audio');
-    audio.play().catch(error => {
-        console.log('Autoplay prevented. Audio will play after user interaction.');
-    });
-}); -->
-
-<!-- <audio id="background-audio" autoplay loop>
-    <source src="Audio/dtf.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio> -->
