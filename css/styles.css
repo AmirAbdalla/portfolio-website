@@ -86,33 +86,138 @@ section {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
+.section-about h2,
+.section-projects h2,
+.section-contact h2,
+.section-skills h2,
+.section-resume h2 {
+    font-size: 2.5rem;
+    /* Adjust this value for size */
+    font-weight: 600;
+    /* Controls the thickness of the text */
+    margin-bottom: 0.75rem;
+    /* Spacing below the header */
+}
+
+.section-fun h2 {
+    font-size: 2.5rem;
+    /* Adjust this value for size */
+    font-weight: 600;
+    /* Controls the thickness of the text */
+    margin-bottom: 2.0rem;
+
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
 .section-home {
-    background: linear-gradient(90deg, #02d0d9, #003366);
+    background: linear-gradient(90deg, #02d0d9, #003366, #6c63ff);
+    background-size: 300% 300%;
+    animation: gradientBackground 6s ease infinite;
     color: #ffffff;
-    animation: gradientAnimation 5s ease-in-out infinite;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-home h1,
+.section-home p,
+.section-home .button {
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeInText 1s ease-out forwards;
+    /* Fade-in animation */
 }
 
 .section-home h1 {
     font-size: 3.5rem;
     font-family: var(--font-secondary);
     margin-bottom: 1rem;
+    animation-delay: 0.5s;
+    /* First line appears */
+
+}
+
+
+
+.section-home p {
+    font-size: 1.2rem;
+    animation-delay: 1.5s;
+    /* Second line appears */
 }
 
 .section-home .button {
-    background-color: var(--bg-darker);
-    color: var(--accent);
+    position: relative;
+    background: linear-gradient(90deg, #02d0d9, #003366, #6c63ff);
+    background-size: 300% 300%;
+    color: #ffffff; /* Text color visible */
     padding: 0.75rem 1.5rem;
+    border: none;
     border-radius: 8px;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Slightly larger text */
     font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 1; /* Ensures text is above the pseudo-element */
+    overflow: hidden;
+
     transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+    animation-delay: 2.5s;
+    /* First line appears */
+
+}
+.section-home .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0; /* Ensures it covers the entire button initially */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #02d0d9, #003366, #6c63ff);
+    background-size: 300% 300%;
+    animation: gradientBackground 6s ease infinite;
+    z-index: -1; /* Sends it behind the button text */
+    transition: transform 0.3s ease;
+}
+.section-home .button:hover::before {
+    left: 0;
 }
 
 .section-home .button:hover {
-    background-color: var(--accent);
-    color: var(--bg-darker);
     transform: scale(1.1);
+    color: #f400af; /* Text color changes on hover */
     box-shadow: 0 4px 15px rgba(2, 250, 246, 0.2);
+    z-index: 1; /* Ensure text remains above pseudo-element */
 }
 
 /* GitHub Profile Link */
@@ -196,9 +301,11 @@ a.github-link:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
