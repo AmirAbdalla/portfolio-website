@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Amir Abdalla, a passionate software engineering student specializing in web development.">
+    <meta name="description"
+        content="Portfolio of Amir Abdalla, a passionate software engineering student specializing in web development.">
     <title>Amir Abdalla | Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
 </head>
@@ -21,16 +24,16 @@
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
-<!-- I'm a software engineering student at Seneca Polytechnic -->
+    <!-- I'm a software engineering student at Seneca Polytechnic -->
     <main>
         <!-- Home Section -->
         <section id="home" class="section-home">
@@ -42,14 +45,34 @@
         <!-- Projects Section -->
         <section id="projects" class="section section-projects" data-aos="fade-left">
             <h2>My Projects</h2>
-            <p>Here are some of the projects I've worked on. You can check out more on my <a href="https://github.com/AmirAbdalla" target="_blank" rel="noopener noreferrer">GitHub profile</a>.</p>
+            <p>Here are some of the projects I've worked on. You can check out more on my <a
+                    href="https://github.com/AmirAbdalla" target="_blank" rel="noopener noreferrer">GitHub profile</a>.
+            <div class="project">
+
+                <div class="project">
+                    <h3>Traffic Analysis and Pattern Recognition</h3>
+                    <p><strong>Technologies:</strong> Python, Pandas, Matplotlib</p>
+                    <p>Analyzed 190K+ traffic records to uncover congestion patterns and trends using machine learning
+                        models.</p>
+                </div>
+
+                <div class="project">
+                    <h3>AI-Powered Chatbot</h3>
+                    <p><strong>Technologies:</strong> Python, Tkinter, Google Generative AI</p>
+                    <p>Developed a dynamic chatbot with a user-friendly GUI for real-time, context-aware conversations.
+                    </p>
+                </div>
+            </div>
+
+            </p>
         </section>
 
         <!-- Resume Section -->
         <section id="resume" class="section section-resume" data-aos="fade-right">
             <h2>Resume</h2>
-            <p>If you'd like to learn more about my experience and skills, feel free to download my resume by clicking the button below.</p>
-            <a href="downloads/Amir_Abdalla_Resume.pdf" class="button" download>
+            <p>If you'd like to learn more about my experience and skills, feel free to download my resume by clicking
+                the button below.</p>
+            <a href="Resume/Amir_Software_Resume.pdf" class="button" download>
                 <i class="fas fa-file-download"></i> Download Resume
             </a>
         </section>
@@ -73,7 +96,8 @@
         <!-- Stress Relief Section -->
         <section id="stress-relief" class="section section-fun" data-aos="fade-right">
             <h2>Feeling Stressed?</h2>
-            <a href="./Videos/never-gonna-give-you-up-rick-astley-lyrics-480-ytshorts.savetube.me.mp4" target="_blank" class="button fun-button">Push the Button</a>
+            <a href="./Videos/never-gonna-give-you-up-rick-astley-lyrics-480-ytshorts.savetube.me.mp4" target="_blank"
+                class="button fun-button">Push the Button</a>
         </section>
 
         <!-- Contact Section -->
@@ -82,8 +106,10 @@
             <p>If you'd like to get in touch, feel free to contact me via phone or email.</p>
             <ul>
                 <li><i class="fas fa-phone"></i> 647-877-7677</li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:aabdalla14@myseneca.ca">aabdalla14@myseneca.ca</a></li>
-                <li><i class="fab fa-github"></i> <a href="https://github.com/AmirAbdalla" target="_blank" rel="noopener noreferrer">github.com/AmirAbdalla</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:aabdalla14@myseneca.ca">aabdalla14@myseneca.ca</a>
+                </li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/AmirAbdalla" target="_blank"
+                        rel="noopener noreferrer">github.com/AmirAbdalla</a></li>
             </ul>
             <form action="mailto:aabdalla14@myseneca.ca" method="POST" enctype="text/plain">
                 <input type="text" name="name" placeholder="Your Name" required>
@@ -137,6 +163,32 @@
                 navToggle.setAttribute('aria-expanded', false);
             });
         });
+
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            const observerOptions = {
+                root: null, // Observing within the viewport
+                threshold: 0.6, // 60% of the section needs to be visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.id;
+                        navLinks.forEach((link) => {
+                            link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach((section) => observer.observe(section));
+        });
+
     </script>
 
 </body>
